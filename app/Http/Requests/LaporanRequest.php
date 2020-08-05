@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BeritaRequest extends FormRequest
+class LaporanRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,11 @@ class BeritaRequest extends FormRequest
     public function rules()
     {
         return [
-            "category_id" => ['required'],
+            "report_id" => ['required'],
             "title" => ['required'],
             "body" => ['required'],
-            "thumbnail" => ['mimes:jpg,jpeg,png']
+            "file" => ['mimes:pdf,docx,xls'],
+            "thumbnail" => ['mimes:jpg,jpeg,png','max:2048']
         ];
     }
 }

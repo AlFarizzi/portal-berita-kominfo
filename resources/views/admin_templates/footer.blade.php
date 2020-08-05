@@ -15,25 +15,26 @@
     <script src="/asset_admin/dist/js/custom.min.js"></script>
     <!--This page JavaScript -->
     <!-- <script src="/asset_admin/dist/js/pages/dashboards/dashboard1.js"></script> -->
-    <!-- Charts js Files -->
-    <script src="/asset_admin/assets/libs/flot/excanvas.js"></script>
-    <script src="/asset_admin/assets/libs/flot/jquery.flot.js"></script>
-    <script src="/asset_admin/assets/libs/flot/jquery.flot.pie.js"></script>
-    <script src="/asset_admin/assets/libs/flot/jquery.flot.time.js"></script>
-    <script src="/asset_admin/assets/libs/flot/jquery.flot.stack.js"></script>
-    <script src="/asset_admin/assets/libs/flot/jquery.flot.crosshair.js"></script>
-    <script src="/asset_admin/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
-    <script src="/asset_admin/dist/js/pages/chart/chart-page-init.js"></script>
-    <script src="/dataTables/jquery.dataTables.min.js"></script>
     <script src="/ckeditor/ckeditor.js"></script>
+    <script src="/dataTables/jquery.dataTables.min.js"></script>
     <script>
-        CKEDITOR.replace('body');
+        let body = document.getElementById('body');
+        if (body !== null) {
+            CKEDITOR.replace('body');   
+        }
     </script>
     <script>
         $(document).ready(function() {
             $('#example').DataTable();
         } );
     </script>
+    <script>
+        let alert = document.getElementById('alert');
+        if (alert !== null) {
+            setTimeout(() => {
+                alert.remove();
+            }, 2000);    
+        } 
+    </script>
 </body>
-
 </html>

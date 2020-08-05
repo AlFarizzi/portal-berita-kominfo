@@ -11,11 +11,15 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/asset_admin/assets/images/favicon.png">
     <title>Matrix Template - The Ultimate Multipurpose admin template</title>
-    <!-- Custom CSS -->
-    <link href="/asset_admin/assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    {{-- <!-- Custom CSS -->
+    <link href="/asset_admin/assets/libs/flot/css/float-chart.css" rel="stylesheet"> --}}
     <!-- Custom CSS -->
     <link href="/asset_admin/dist/css/style.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/dataTables/jquery.dataTables.min.css">
+    <style>
+        * {
+            text-transform: capitalize;
+        }
+    </style>
 </head>
-
 <body>

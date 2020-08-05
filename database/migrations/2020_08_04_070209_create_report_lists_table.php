@@ -17,8 +17,10 @@ class CreateReportListsTable extends Migration
             $table->id();
             $table->integer('report_id')->index();
             $table->string('title');
+            $table->string('slug');
             $table->text('body');
-            $table->string('thumbnail');
+            $table->string('file')->nullable();
+            $table->string('thumbnail')->default('default.jpg');
             $table->timestamps();
         });
     }

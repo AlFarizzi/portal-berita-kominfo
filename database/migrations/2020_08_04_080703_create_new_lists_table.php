@@ -17,9 +17,9 @@ class CreateNewListsTable extends Migration
             $table->id();
             $table->integer('category_id')->index();
             $table->string('title');
+            $table->string('slug');
             $table->text('body');
             $table->string('thumbnail')->default('default.jpg');
-            $table->string('user_id')->index();
             $table->timestamps();
         });
     }

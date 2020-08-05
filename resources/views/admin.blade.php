@@ -1,12 +1,11 @@
 @include('admin_templates.header')
 @include('admin_widgets.preloader')
+@include('sweetalert::alert')
     <div id="main-wrapper">
         @include('admin_widgets.navbar')
         @include('admin_widgets.sidebar')
 
         <div class="page-wrapper">
-           @include('admin_widgets.breadcumb')
-            
             <div class="container-fluid">
                @yield('content')
             </div>
