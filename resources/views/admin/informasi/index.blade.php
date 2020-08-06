@@ -39,7 +39,7 @@
                     <td>{{$inf->created_at->diffForHumans()}}</td>
                     <td>Laporan {{$inf->info->information}}</td>
                     <td>
-                        <form style="display: inline;" method="post" >
+                        <form style="display: inline;" action="{{route('informasi.destroy',$inf)}}"  method="post" >
                             @csrf
                             @method('delete')
                             <button onclick="return confirm('Yakin Akan Menghapus Informasi Ini ?')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>

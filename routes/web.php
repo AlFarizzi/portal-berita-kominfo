@@ -60,6 +60,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'],function() {
         Route::get('/permohonan-informasi', 'InformasiController@index')->name('permohonan.index');
         Route::get('/tambah-informasi', 'InformasiController@store_form')->name('informasi.store');
         Route::post('/tambah-informasi', 'InformasiController@store');
-        // Route::delete('/hapus-informasi/{inf:slug}')
+        Route::delete('/hapus-informasi/{inf}', 'InformasiController@destroy')->name('informasi.destroy');
     });
 });

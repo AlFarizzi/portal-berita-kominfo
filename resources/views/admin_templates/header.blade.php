@@ -17,6 +17,9 @@
     <link href="/asset_admin/dist/css/style.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/dataTables/jquery.dataTables.min.css">
     <style>
+        .pdfobject-container { height: 30rem; border: 1rem solid rgba(0,0,0,.1); }
+    </style>
+    <style>
         * {
             text-transform: capitalize;
         }

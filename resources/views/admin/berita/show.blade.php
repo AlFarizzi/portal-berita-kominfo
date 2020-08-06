@@ -21,7 +21,7 @@
                 </div>
                 <div class="col-md-4">
                     <h5 class="text-center mt-2">Related Post</h5>
-                    @forelse ($collection as $item)
+                    @forelse ($related as $rl)
                     <div class="card shadow-lg p-3 mb-5 bg-white rounded">
                         <img src="{{$rl->thumbnail == 'default.jpg' ? '/default.jpg' : '/storage/'.$rl->thumbnail}}" class="card-img-top" alt="..."/>
                         <div class="card-body">

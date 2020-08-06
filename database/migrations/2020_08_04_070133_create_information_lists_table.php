@@ -18,6 +18,7 @@ class CreateInformationListsTable extends Migration
             $table->integer('information_id')->index();
             $table->integer('sub_information_id')->nullable()->index();
             $table->string('title');
+            $table->string('slug');
             $table->text('body');
             $table->string('thumbnail');
             $table->string('file')->nullable();

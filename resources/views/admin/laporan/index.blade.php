@@ -30,10 +30,20 @@
                         <a href="{{route('laporan.show',$report)}}" class="btn btn-success btn-sm"><i class="fa fa-search-plus"></i></a>
                         @if ($report->file !== null)
                             <a href="{{route('laporan.download',$report)}}" class="btn btn-primary btn-sm"><i class="fa fa-download"></i></a>
+                            <a href="#"  data-toggle="modal" data-target="#exampleModal" data-pdf="{{$report->file}}" id="file" >Baca</a>
                         @endif
                     </td>
                 </tr>
             @endforeach
         </tbody>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-body">
+                    <div class="pdfobject-container" id="example1"></div>  
+                </div>
+              </div>
+            </div>
+          </div>
     @include('admin.util.tableFooter')
 @endsection

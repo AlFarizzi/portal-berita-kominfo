@@ -15,6 +15,16 @@
     <script src="/asset_admin/dist/js/custom.min.js"></script>
     <script src="/ckeditor/ckeditor.js"></script>
     <script src="/dataTables/jquery.dataTables.min.js"></script>
+    <script src="/pdf_viewer/pdfobject.js"></script>
+    <script>
+        let files = Array.from(document.querySelectorAll('#file'));
+        files.forEach(file => {
+            file.addEventListener('click', () => {
+                console.log(file.dataset.pdf);
+                PDFObject.embed('/storage/'+file.dataset.pdf, "#example1");
+            })
+        })
+    </script>
     <script>
         let body = document.getElementById('body');
         if (body !== null) {
