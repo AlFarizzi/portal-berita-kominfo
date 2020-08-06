@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class BeritaRequest extends FormRequest
 {
@@ -23,6 +24,7 @@ class BeritaRequest extends FormRequest
      */
     public function rules()
     {
+        Alert::warning('Input Tidak Valid', 'Perikasa Kembali Input Data Kamu !');
         return [
             "category_id" => ['required'],
             "title" => ['required'],

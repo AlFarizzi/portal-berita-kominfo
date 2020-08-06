@@ -1,9 +1,6 @@
 @extends('admin')
 
 @section('content')
-@if (session('success'))
-    @include('admin.util.alert')
-@endif
 <div class="card">
     <div class="card-header">
         <h3>Tambah Berita</h3>

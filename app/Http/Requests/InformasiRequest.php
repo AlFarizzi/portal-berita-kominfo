@@ -3,8 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use RealRashid\SweetAlert\Facades\Alert;
-class LaporanRequest extends FormRequest
+
+class InformasiRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,13 +23,10 @@ class LaporanRequest extends FormRequest
      */
     public function rules()
     {
-        Alert::warning('Input Tidak Valid', 'Perikasa Kembali Input Data Kamu !');
         return [
-            "report_id" => ['required'],
+            "information_id" => ['required'],
             "title" => ['required'],
-            "body" => ['required'],
-            "file" => ['mimes:pdf,docx,xls'],
-            "thumbnail" => ['mimes:jpg,jpeg,png','max:2048']
+            "body" => ['required']
         ];
     }
 }

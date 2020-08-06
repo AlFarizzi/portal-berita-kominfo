@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\admin\LaporanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +19,7 @@ Route::get('/', function () {
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'],function() {
     Route::get('', 'HomeController@index')->name('admin.index');
+
     Route::group(['prefix' => 'berita'],function() {
         Route::get('','BeritaController@store_form')->name('berita.store');
         Route::post('', 'BeritaController@store');
@@ -36,7 +36,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'],function() {
         Route::patch('/edit-berita/{new:slug}', 'BeritaController@update');
         Route::get('/detail-berita/{new:slug}', 'BeritaController@show')->name('berita.show');
     });
-    Route::group(['prefix' => 'laporan'],function() {
+
+    Route::group(['prefix' => "laporan"],function() {
         Route::get('', 'LaporanController@store_form')->name('laporan.store');
         Route::post('', 'LaporanController@store');
         Route::get('/laporan-hoaks', 'LaporanController@index')->name('hoaks.index');
@@ -48,5 +49,17 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'],function() {
         Route::delete('hapus-laporan/{report:slug}', 'LaporanController@destroy')->name('laporan.destroy');
         Route::get('/edit-laporan/{report:slug}', 'LaporanController@edit')->name('laporan.update');
         Route::patch('/edit-laporan/{report:slug}', 'LaporanController@update');
+        Route::get('detail-laporan/{report:slug}', 'LaporanController@show')->name('laporan.show');
+        Route::get('/download-laporan.{report:slug}', 'LaporanController@download')->name('laporan.download');
+    });
+
+    Route::group(['prefix' => 'informasi'],function() {
+        Route::Get('/informasi-berkala', 'InformasiController@index')->name('berkala.index');
+        Route::get('/informasi-setiap-saat', 'InformasiController@index')->name('setiap_saat.index');
+        Route::get('/informasi-serta-merta', 'InformasiController@index')->name('serta_merta.index');
+        Route::get('/permohonan-informasi', 'InformasiController@index')->name('permohonan.index');
+        Route::get('/tambah-informasi', 'InformasiController@store_form')->name('informasi.store');
+        Route::post('/tambah-informasi', 'InformasiController@store');
+        // Route::delete('/hapus-informasi/{inf:slug}')
     });
 });

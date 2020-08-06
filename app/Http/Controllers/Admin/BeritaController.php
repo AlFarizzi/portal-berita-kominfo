@@ -15,15 +15,15 @@ class BeritaController extends Controller
 
     public function index() {
         if (request()->is('admin/berita/kementrian')) {
-            $news = NewList::orderBy('updated_at','DESC')->where('category_id',1)->get();
+            $news = NewList::orderBy('updated_at','DESC')->whereCategoryId(1)->get();
         } else if(request()->is('admin/berita/pemerintah')) {
-            $news = NewList::orderBy('updated_at','DESC')->where('category_id',2)->get();
+            $news = NewList::orderBy('updated_at','DESC')->whereCategoryId(2)->get();
         } else if(request()->is('admin/berita/siaran-pers')) {
-            $news = NewList::orderBy('updated_at','DESC')->where('category_id',3)->get();
+            $news = NewList::orderBy('updated_at','DESC')->whereCategoryId(3)->get();
         } else if(request()->is('admin/berita/sorotan-media')) {
-            $news = NewList::orderBy('updated_at','DESC')->where('category_id',4)->get();
+            $news = NewList::orderBy('updated_at','DESC')->whereCategoryId(4)->get();
         } else if(request()->is('admin/berita/artikel')) {
-            $news = NewList::orderBy('updated_at','DESC')->where('category_id',5)->get();
+            $news = NewList::orderBy('updated_at','DESC')->whereCategoryId(5)->get();
         }
         return view('admin.berita.index',compact('news'));
     }
@@ -34,13 +34,14 @@ class BeritaController extends Controller
     }
 
     public function store(BeritaRequest $request) {
-        $input = $request->all();
-        if (isset($input['thumbnail'])) {
-            $input['thumbnail'] = $request->file('thumbnail')->store('berita');
-        }
-        $input['user_id'] = 1;
-        $input['slug'] = \Str::slug($input['title']) . '-' . \Str::random(5);
-        NewList::create($input);
+        ( isset($request->thumbnail) ) ? $thumbnail = $request->file('thumbnail')->store('berita') : $thumbnail = 'default.jpg';
+        NewList::create([
+            "category_id" => $request->category_id,
+            "title" => $request->title,
+            "slug" => \Str::slug($request->title).'-',\Str::random(5),
+            "body" => $request->body,
+            "thumbnail" => $thumbnail
+        ]);
         Alert::success('Berhasil', 'Data Berhasil Di Tambah');
         return back();
     }
@@ -80,7 +81,7 @@ class BeritaController extends Controller
     }
 
     public function show(NewList $new) {
-        $related = NewList::where('category_id',$new->category_id)->latest()->limit(6)->get();
+        $related = NewList::whereCategoryId($new->category_id)->latest()->limit(6)->get();
         return view('admin.berita.show',compact('new','related'));
     }
 

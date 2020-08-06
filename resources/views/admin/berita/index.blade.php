@@ -1,9 +1,6 @@
 @extends('admin')
 
 @section('content')
-@if (session('success'))
-    @include('admin.util.alert')
-@endif
 @include('admin.util.tableHead')
     <thead>
         <tr>

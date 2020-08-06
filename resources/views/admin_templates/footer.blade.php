@@ -13,8 +13,6 @@
     <script src="/asset_admin/dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="/asset_admin/dist/js/custom.min.js"></script>
-    <!--This page JavaScript -->
-    <!-- <script src="/asset_admin/dist/js/pages/dashboards/dashboard1.js"></script> -->
     <script src="/ckeditor/ckeditor.js"></script>
     <script src="/dataTables/jquery.dataTables.min.js"></script>
     <script>
@@ -29,12 +27,18 @@
         } );
     </script>
     <script>
-        let alert = document.getElementById('alert');
-        if (alert !== null) {
-            setTimeout(() => {
-                alert.remove();
-            }, 2000);    
-        } 
+        let sub = document.getElementById('sub');
+        let cho = document.querySelectorAll('#choice');
+        cho.forEach(c => {
+            c.addEventListener('click', () => {
+                if (c.dataset.id == 1) {
+                    sub.style.opacity = 1;
+                } else {
+                    sub.style.opacity = 0;
+                }
+            })
+        });
+    
     </script>
 </body>
 </html>

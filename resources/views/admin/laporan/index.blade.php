@@ -1,9 +1,6 @@
 @extends('admin')
 
 @section('content')
-@if (session('success'))
-    @include('admin.util.alert')
-@endif
     @include('admin.util.tableHead')
         <thead>
             <tr>
@@ -30,7 +27,10 @@
                             <button onclick="return confirm('Yakin Akan Menghapus Informasi Ini ?')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
                         </form>
                         <a href="{{route('laporan.update',$report)}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
-                        <a href="" class="btn btn-success btn-sm"><i class="fa fa-search-plus"></i></a>
+                        <a href="{{route('laporan.show',$report)}}" class="btn btn-success btn-sm"><i class="fa fa-search-plus"></i></a>
+                        @if ($report->file !== null)
+                            <a href="{{route('laporan.download',$report)}}" class="btn btn-primary btn-sm"><i class="fa fa-download"></i></a>
+                        @endif
                     </td>
                 </tr>
             @endforeach

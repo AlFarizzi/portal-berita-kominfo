@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInformationListsTable extends Migration
+class CreateSubInformationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateInformationListsTable extends Migration
      */
     public function up()
     {
-        Schema::create('information_lists', function (Blueprint $table) {
+        Schema::create('sub__information', function (Blueprint $table) {
             $table->id();
             $table->integer('information_id')->index();
-            $table->integer('sub_information_id')->nullable()->index();
-            $table->string('title');
-            $table->text('body');
-            $table->string('thumbnail');
-            $table->string('file')->nullable();
+            $table->string('sub_information');
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ class CreateInformationListsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('information_lists');
+        Schema::dropIfExists('sub__information');
     }
 }
