@@ -12,4 +12,8 @@ class InformationList extends Model
         return $this->belongsTo(Information::class, 'information_id');
     }
 
+    public function sub() {
+        return $this->hasOne(Sub_Information::class, 'sub_information_id');
+    }
+
 }

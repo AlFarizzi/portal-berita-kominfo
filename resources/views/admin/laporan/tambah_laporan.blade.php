@@ -3,7 +3,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <h3>Tambah Berita</h3>
+        <h3>Tambah Laporan</h3>
     </div>
     <div class="card-body">
         <form method="post" action="{{route('laporan.store')}}" enctype="multipart/form-data">

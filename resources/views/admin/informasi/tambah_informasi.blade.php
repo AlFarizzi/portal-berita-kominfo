@@ -1,12 +1,9 @@
 @extends('admin')
 
 @section('content')
-@if (session('success'))
-    @include('admin.util.alert')
-@endif
 <div class="card">
     <div class="card-header">
-        <h3>Tambah Berita</h3>
+        <h3>Tambah Informasi</h3>
     </div>
     <div class="card-body">
         <form method="post" action="{{route('informasi.store')}}" enctype="multipart/form-data">
@@ -50,7 +47,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="">Berita</label>
+                <label for="">Informasi</label>
                 <textarea name="body" id="body" cols="30" rows="10"></textarea>
             </div>
             

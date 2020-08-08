@@ -18,9 +18,9 @@ class BeritaController extends Controller
             $news = NewList::orderBy('updated_at','DESC')->whereCategoryId(1)->get();
         } else if(request()->is('admin/berita/pemerintah')) {
             $news = NewList::orderBy('updated_at','DESC')->whereCategoryId(2)->get();
-        } else if(request()->is('admin/berita/siaran-pers')) {
+        } else if(request()->is('admin/berita/pers')) {
             $news = NewList::orderBy('updated_at','DESC')->whereCategoryId(3)->get();
-        } else if(request()->is('admin/berita/sorotan-media')) {
+        } else if(request()->is('admin/berita/media')) {
             $news = NewList::orderBy('updated_at','DESC')->whereCategoryId(4)->get();
         } else if(request()->is('admin/berita/artikel')) {
             $news = NewList::orderBy('updated_at','DESC')->whereCategoryId(5)->get();

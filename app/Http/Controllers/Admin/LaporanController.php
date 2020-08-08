@@ -7,6 +7,7 @@ use App\Models\ReportList;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LaporanRequest;
+use App\Models\InformationList;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 class LaporanController extends Controller
@@ -92,5 +93,4 @@ class LaporanController extends Controller
      return Storage::disk('local')->download('public/'.$report->file);
      return back();
     }
-
 }

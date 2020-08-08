@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Foundation\Http\FormRequest;
 
 class InformasiRequest extends FormRequest
@@ -23,6 +24,7 @@ class InformasiRequest extends FormRequest
      */
     public function rules()
     {
+        Alert::warning('Input Tidak Valid', 'Perikasa Kembali Input Data Kamu !');
         return [
             "information_id" => ['required'],
             "title" => ['required'],

@@ -6,7 +6,7 @@
 @endif
 <div class="card">
     <div class="card-header">
-        <h3>Tambah Berita</h3>
+        <h3>Edit Laporan</h3>
     </div>
     <div class="card-body">
         <form method="post" action="{{route('laporan.update',$report)}}" enctype="multipart/form-data">
@@ -38,7 +38,7 @@
             </div>
             <div class="form-group">
                 <label for="">Laporan</label>
-                <textarea name="body" id="body" cols="30" rows="10">{{$report->body}}</textarea>
+                <textarea name="body" id="body" cols="30" rows="10">{!!$report->body!!}</textarea>
             </div>
             
             <button class="btn btn-primary" type="submit"><i class="mdi mdi-send"></i> Kirim</button>

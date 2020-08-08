@@ -13,8 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin');
+Route::group(['namespace' => 'Reader'], function() {
+    Route::get('', 'HomeController@index')->name('reader.index');
+    Route::group(['prefix' => 'berita'], function() {
+        Route::get('/baca-barita/{berita:slug}', 'ReaderController@berita_show')->name('berita.read');
+    });
+    Route::group(['prefix' => 'informasi'],function() {
+        Route::get('/baca-informasi/{inf:slug}', 'ReaderController@info_show')->name('info.read');
+    });
 });
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'],function() {
@@ -25,8 +31,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'],function() {
         Route::post('', 'BeritaController@store');
         Route::get('/kementrian', 'BeritaController@index')->name('kementrian.index');
         Route::get('/pemerintah', 'BeritaController@index')->name('pemerintah.index');
-        Route::get('/siaran-pers', 'BeritaController@index')->name('pers.index');
-        Route::get('/sorotan-media', 'BeritaController@index')->name('media.index');
+        Route::get('/pers', 'BeritaController@index')->name('pers.index');
+        Route::get('/media', 'BeritaController@index')->name('media.index');
         Route::get('/artikel', 'BeritaController@index')->name('artikel.index');
         // Route::get('/galeri-foto', 'BeritaController@index')->name('foto.index');
         // Route::get('/galeri-video', 'BeritaController@index')->name('video.index');
@@ -61,5 +67,10 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'],function() {
         Route::get('/tambah-informasi', 'InformasiController@store_form')->name('informasi.store');
         Route::post('/tambah-informasi', 'InformasiController@store');
         Route::delete('/hapus-informasi/{inf}', 'InformasiController@destroy')->name('informasi.destroy');
+        Route::get('/edit-informasi/{inf:slug}', 'InformasiController@edit')->name('informasi.update');
+        Route::patch('/edit-informasi/{inf:slug}', 'InformasiController@update');
+        Route::get('/detail-informasi/{inf:slug}', 'InformasiController@show')->name('informasi.show');
+        Route::get('/download-informasi/{inf:slug}', 'InformasiController@download')->name('informasi.download');
+        Route::get('/{inf:sub_information}', 'InformasiController@bSelect')->name('berkala.select');
     });
 });

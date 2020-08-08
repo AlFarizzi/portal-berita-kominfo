@@ -10,7 +10,7 @@ $factory->define(NewList::class, function (Faker $faker) {
         "title" => $faker->sentence(),
         "category_id" => rand(1,5),
         "slug" => $faker->slug(), 
-        "body" => $faker->paragraph(),
+        "body" => $faker->paragraph(20),
         "thumbnail" => 'default.jpg',
     ];
 });
