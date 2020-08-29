@@ -23,12 +23,24 @@
                     <div class="col-lg-8">
                         <!-- Trending Top -->
                         <div class="trending-top mb-30">
-                            <div class="trend-top-img">
-                                <img src="/asset_reader/assets/img/trending/trending_top.jpg" alt="">
-                                <div class="trend-top-cap">
-                                    <span>Appetizers</span>
-                                    <h2><a href="details.html">Welcome To The Best Model Winner<br> Contest At Look of the year</a></h2>
-                                </div>
+                            <div class="single-item">
+                                @for ($i = 0; $i < 4; $i++)
+                                    <div class="trend-top-img">
+                                        <picture>
+                                            @if ($berita[$i]['thumbnail'] !== 'default.jpg')
+                                                <source type="image/jpeg" data-srcset="/storage/{{$berita[$i]['thumbnail']}}">
+                                                <img style="border-radius: 5%;" type="image/jpeg" data-src="/storage/{{$berita[$i]['thumbnail']}}"  class="lazyload">
+                                            @else
+                                                <source type="image/jpeg" data-srcset="/{{$berita[$i]['thumbnail']}}">
+                                                <img style="border-radius: 5%;" type="image/jpeg" data-src="/{{$berita[$i]['thumbnail']}}"  class="lazyload">
+                                            @endif   
+                                        </picture>
+                                        <div class="trend-top-cap">
+                                            <span>{{$berita[$i]->new->new}}</span>
+                                            <h4 class="text-white"><a href="{{route('berita.read',$berita[$i])}}">{{$berita[$i]['title']}}</a></h4>
+                                        </div>
+                                    </div>
+                                @endfor
                             </div>
                         </div>
                         <!-- Trending Bottom -->
@@ -38,15 +50,19 @@
                                     <div class="col-lg-4">
                                         <div class="single-bottom mb-35">
                                             <div class="trend-bottom-img mb-30">
-                                                @if ($berita[$i]['thumbnail'] !== 'default.jpg')
-                                                <img src="/storage/{{$berita[$i]['thumbnail']}}" alt="">
-                                                @else
-                                                <img src="/{{$berita[$i]['thumbnail']}}" alt="">
-                                                @endif
+                                                <picture>
+                                                    @if ($berita[$i]['thumbnail'] !== 'default.jpg')
+                                                        <source type="image/jpeg" data-srcset="/storage/{{$berita[$i]['thumbnail']}}">
+                                                        <img style="border-radius: 5%;" type="image/jpeg" data-src="/storage/{{$berita[$i]['thumbnail']}}"  class="lazyload">
+                                                    @else
+                                                        <source type="image/jpeg" data-srcset="/{{$berita[$i]['thumbnail']}}">
+                                                        <img style="border-radius: 5%;" type="image/jpeg" data-src="/{{$berita[$i]['thumbnail']}}"  class="lazyload">
+                                                    @endif   
+                                                </picture>
                                             </div>
                                             <div class="trend-bottom-cap">
-                                                <span class="color3">Travels</span>
-                                                <h4><a href="details.html"> Welcome To The Best Model Winner Contest</a></h4>
+                                                <span class="color{{$i}}">{{$berita[$i]->new->new}}</span>
+                                                <h4><a href="{{route('berita.read',$berita[$i])}}">  {{Str::limit($berita[$i]->title,76,'.')}}  </a></h4>
                                             </div>
                                         </div>
                                     </div>
@@ -59,11 +75,15 @@
                         @for ($i = 0; $i < 2; $i++)
                             <div class="trand-right-single d-flex" style="display: block !important">
                                 <div class="trand-right-img">
-                                    @if ($berita[$i]['thumbnail'] !== 'default.jpg')
-                                    <img class="img-thumbnail w-75 rounded" src="/storage/{{$berita[$i]['thumbnail']}}" alt="">
-                                    @else
-                                    <img class="img-thumbnail w-75 rounded" src="/{{$berita[$i]['thumbnail']}}" alt="">
-                                    @endif
+                                    <picture>
+                                        @if ($berita[$i]['thumbnail'] !== 'default.jpg')
+                                            <source type="image/jpeg" data-srcset="/storage/{{$berita[$i]['thumbnail']}}">
+                                            <img style="border-radius: 5%;" type="image/jpeg" data-src="/storage/{{$berita[$i]['thumbnail']}}"  class="img-thumbnail w-75  lazyload">
+                                        @else
+                                            <source type="image/jpeg" data-srcset="/{{$berita[$i]['thumbnail']}}">
+                                            <img style="border-radius: 5%;" type="image/jpeg" data-src="/{{$berita[$i]['thumbnail']}}"  class="img-thumbnail w-75  lazyload">
+                                        @endif   
+                                    </picture>
                                 </div> 
                                 <div class="trand-right-cap mt-2">
                                     <span class="color1">{{$berita[$i]->new->new}}</span>

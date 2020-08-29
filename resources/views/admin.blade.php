@@ -10,8 +10,17 @@
                @yield('content')
             </div>
 
+            <style>
+                .love {
+                    color:red
+                }
+                .git {
+                    color: black
+                }
+            </style>
+
             <footer class="footer text-center">
-                All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
+               Backend Developed With <i class="love fas fa-heart"></i> By <a href="https://github.com/AlFarizzi"><i class="git fab fa-github"></i>AlFarizzi</a>
             </footer>
         </div>
     </div>

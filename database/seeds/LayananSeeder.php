@@ -40,6 +40,6 @@ class LayananSeeder extends Seeder
             [
                 "service" => "direktori"
             ],
-        ]
+        ];
     }
 }

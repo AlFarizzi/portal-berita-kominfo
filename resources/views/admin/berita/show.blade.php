@@ -8,10 +8,8 @@
                 <div class="col-md-8">   
                     <img src="{{$new->thumbnail == 'default.jpg' ? '/default.jpg' : '/storage/'.$new->thumbnail}}" class="img-thumbnail" alt="">
                     <a href="{{route('berita.update',$new)}}" class="btn btn-warning mt-2"><i class="fa fa-edit"></i> Edit</a>
-                    <form  action="{{route('berita.destroy',$new)}}" style="display: inline;" method="post">
-                        @method('delete')
-                        <button type="submit" class="btn btn-danger mt-2" onclick="return confirm('Yakin Akan Menghapus Berita Ini ?')"><i class="fa fa-trash"></i> Hapus</button>
-                    </form>
+                    <a href="{{route('berita.destroy',$new)}}" onclick="return confirm('Yakin Akan Menghapus Data Ini')" class="btn btn-danger mt-2"><i class="fa fa-trash"></i> Hapus</a>
+                    
                     <hr>
                     <h3>{{$new->title}}</h3>
                     <div class="badge badge-success">{{$new->new->new}}</div>

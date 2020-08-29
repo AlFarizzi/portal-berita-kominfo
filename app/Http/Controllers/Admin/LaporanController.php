@@ -37,6 +37,7 @@ class LaporanController extends Controller
 
     public function store(LaporanRequest $request) {
         $input = $request->all();
+        dd($input);
         (!isset($input['file'])) ? $input['file'] = null : $input['file'] = $request->file('file')->store('file');
         (!isset($input['thumbnail'])) ? $input['thumbnail'] = 'default.jpg' : $input['thumbnail'] = $request->file('thumbnail')->store('laporan');
         $input['slug'] = \Str::slug($input['title']).'-'.\Str::random(5);
@@ -49,7 +50,7 @@ class LaporanController extends Controller
          ($report->file !== null ) ? Storage::delete($report->file) : '';
          $report->delete();
           Alert::success('Berhasil', 'Data Berhasil Di Hapus');
-         return back();
+         return redirect()->route($report->report->report.'.index');
     }
 
     public function edit(ReportList $report) {
@@ -89,8 +90,7 @@ class LaporanController extends Controller
     }
 
     public function download(ReportList $report) {
-     //     dd('bisa');
      return Storage::disk('local')->download('public/'.$report->file);
-     return back();
+     // return back();
     }
 }

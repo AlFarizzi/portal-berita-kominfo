@@ -29,7 +29,9 @@ class LaporanRequest extends FormRequest
             "title" => ['required'],
             "body" => ['required'],
             "file" => ['mimes:pdf,docx,xls'],
-            "thumbnail" => ['mimes:jpg,jpeg,png','max:2048']
+            "thumbnail" => ['mimes:jpg,jpeg,png']
         ];
     }
+
+
 }

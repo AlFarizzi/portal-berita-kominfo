@@ -9,23 +9,36 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\BeritaRequest;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
+use DataTables;
 
 class BeritaController extends Controller
 {
 
-    public function index() {
-        if (request()->is('admin/berita/kementrian')) {
+    public function data() {
+        if (request()->is('admin/berita/kementrian/json')) {
             $news = NewList::orderBy('updated_at','DESC')->whereCategoryId(1)->get();
-        } else if(request()->is('admin/berita/pemerintah')) {
+        } else if(request()->is('admin/berita/pemerintah/json')) {
             $news = NewList::orderBy('updated_at','DESC')->whereCategoryId(2)->get();
-        } else if(request()->is('admin/berita/pers')) {
+        } else if(request()->is('admin/berita/pers/json')) {
             $news = NewList::orderBy('updated_at','DESC')->whereCategoryId(3)->get();
-        } else if(request()->is('admin/berita/media')) {
+        } else if(request()->is('admin/berita/media/json')) {
             $news = NewList::orderBy('updated_at','DESC')->whereCategoryId(4)->get();
-        } else if(request()->is('admin/berita/artikel')) {
+        } else if(request()->is('admin/berita/artikel/json')) {
             $news = NewList::orderBy('updated_at','DESC')->whereCategoryId(5)->get();
         }
-        return view('admin.berita.index',compact('news'));
+        return DataTables::of($news)->editColumn("body", function($data) {
+            return \Str::limit($data->body,70,'.');
+        })->addColumn('SLUG',function($data) {
+            $a = '<a class="btn btn-warning btn-sm text-white" href="'. route('berita.update',$data) .'"><i class="fa fa-edit"></i></a>' . 
+            '<a class="btn btn-danger btn-sm mx-1" href="'. route('berita.destroy',$data) .'"> <i class="fa fa-trash"></i> </a>'.
+            '<a class="btn btn-success btn-sm mx-1" href="'. route('berita.show',$data) .'"> <i class="fa fa-search-plus"></i> </a>';
+            ;
+            return $a;
+        })->rawColumns(['SLUG'])->make(true);
+    }
+
+    public function index() {
+        return view('admin.berita.index');
     }
 
     public function store_form() {
@@ -50,7 +63,7 @@ class BeritaController extends Controller
         ($new->thumbnail !== 'default.jpg' ? Storage::delete($new->thumbnail) : '');
         $new->delete();
         Alert::success('Berhasil', 'Data Berhasil Di Hapus');
-        return back();
+        return redirect()->route($new->new->new.'.index');
     }
 
     public function edit(NewList $new) {

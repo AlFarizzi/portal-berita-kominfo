@@ -104,10 +104,10 @@ background-position: 48px 32px;
 .ticker-controls li.jnt-play-pause.paused.down {
 background-position: 48px 0px;
 }
-.ticker-controls li.jnt-prev {
+/* .ticker-controls li.jnt-prev {
 background-image: url('../images/controls.png');
 background-position: 0px 16px;
-}
+} */
 .ticker-controls li.jnt-prev.over {
 background-position: 0px 32px;
 }

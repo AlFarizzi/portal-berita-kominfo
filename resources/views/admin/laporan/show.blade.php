@@ -7,11 +7,16 @@
             <div class="row">
                 <div class="col-md-8">   
                     <img src="{{$report->thumbnail == 'default.jpg' ? '/default.jpg' : '/storage/'.$report->thumbnail}}" class="img-thumbnail" alt="">
-                    <a href="{{route('laporan.update',$report)}}" class="btn btn-warning mt-2"><i class="fa fa-edit"></i> Edit</a>
                     <form  action="{{route('laporan.destroy',$report)}}" style="display: inline;" method="post">
+                        @csrf
                         @method('delete')
                         <button type="submit" class="btn btn-danger mt-2" onclick="return confirm('Yakin Akan Menghapus Berita Ini ?')"><i class="fa fa-trash"></i> Hapus</button>
                     </form>
+                    <a href="{{route('laporan.update',$report)}}" class="btn btn-warning mt-2"><i class="fa fa-edit"></i> Edit</a>
+                    @if ($report->file !== null)
+                        <a href="{{route('laporan.download',$report)}}" class="btn btn-primary mt-2"><i class="fa fa-download"></i> Download</a>
+                        <a href="#"  data-toggle="modal" data-target="#exampleModal" data-pdf="{{$report->file}}" id="file" class="btn btn-success mt-2"><i class="fab fa-readme"></i> Baca Laporan</a>
+                    @endif
                     <hr>
                     <h3>{{$report->title}}</h3>
                     <div class="badge badge-success">{{$report->report->report}}</div>
@@ -38,6 +43,16 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+            <div class="pdfobject-container" id="example1"></div>  
+        </div>
+      </div>
     </div>
 </div>
 @endsection

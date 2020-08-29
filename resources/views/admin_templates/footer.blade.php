@@ -13,9 +13,9 @@
     <script src="/asset_admin/dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="/asset_admin/dist/js/custom.min.js"></script>
-    <script src="/ckeditor/ckeditor.js"></script>
-    <script src="/dataTables/jquery.dataTables.min.js"></script>
-    <script src="/pdf_viewer/pdfobject.js"></script>
+    <script src="/vendor/ckeditor/ckeditor.js"></script>
+    <script src="/vendor/dataTables/jquery.dataTables.min.js"></script>
+    <script src="/vendor/pdf_viewer/pdfobject.js"></script>
     <script>
         let files = Array.from(document.querySelectorAll('#file'));
         files.forEach(file => {
@@ -31,11 +31,7 @@
             CKEDITOR.replace('body');   
         }
     </script>
-    <script>
-        $(document).ready(function() {
-            $('#example').DataTable();
-        } );
-    </script>
+    @stack('table')
     <script>
         let sub = document.getElementById('sub');
         let cho = document.querySelectorAll('#choice');

@@ -4,33 +4,50 @@
 @include('admin.util.tableHead')
     <thead>
         <tr>
-            <th>#</th>
-            <th>Judul</th>
-            <th>Isi</th>
-            <th>Publikasi</th>
-            <th>Cateogry</th>
+            <th>title</th>
+            <th>body</th>
             <th>Aksi</th>
         </tr>
     </thead>
-    <tbody>
-        @foreach ($news as $new)
-            <tr>
-                <td>{{$loop->iteration}}</td>
-                <td>{{$new->title}}</td>
-                <td>{!!Str::limit($new->body,50,'.')!!}</td>
-                <td>{{$new->created_at->diffForHumans()}}</td>
-                <td>berita {{$new->new->new}}</td>
-                <td>
-                    <form style="display: inline" action="{{route('berita.destroy',$new)}}" method="post" >
-                        @method('delete')
-                        @csrf
-                        <button class="btn btn-danger btn-sm" onclick="return confirm('Yakin Akan Menghapus Berita Ini ?')"><i class="fa fa-trash"></i></button>
-                    </form>
-                    <a href="{{route('berita.update',$new)}}" class="btn btn-warning btn-sm"><i class="fa fa-edit text-white"></i></a>
-                    <a href="{{route('berita.show',$new)}}" class="btn btn-success btn-sm"><i class="fa fa-search-plus"></i></a>
-                </td>
-            </tr>
-        @endforeach
-    </tbody>
+        @push('table')
+            <script>
+                let link = '';
+                let loc = window.location.pathname;
+                console.log(loc);
+                if (loc == '/admin/berita/kementrian') {
+                    link+= 'kementrian/json';
+                } else if(loc == '/admin/berita/pemerintah') {
+                    link+= 'pemerintah/json';
+                } else if(loc == '/admin/berita/pers') {
+                    link+= 'pers/json';
+                } else if(loc == '/admin/berita/media') {
+                    link+= 'media/json';
+                } else {
+                    link+= 'artikel/json';
+                }
+                 $(document).ready(function() {
+            $('#example').DataTable({
+                processing : true,
+                serverSide : true,
+                ajax : link,
+                columns : [
+                    {
+                        "data" : "title",
+                        "name" : "title"
+                    },
+                    {
+                        "data" : "body",
+                        "name" : "body"
+                    },
+                    {
+                        "data" : "SLUG",
+                        "name" : "SLUG"
+                    }
+                ]
+                });
+            } );
+            </script>
+        @endpush
+
 @include('admin.util.tableFooter')
 @endsection

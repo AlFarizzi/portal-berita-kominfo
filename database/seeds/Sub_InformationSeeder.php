@@ -18,13 +18,11 @@ class Sub_InformationSeeder extends Seeder
             ],
             [
                 "information_id" => 1,
-                "sub_information" => "ringkasan informasi tentang program dan/atau kegiatan yang sedang dijalankan dalam lingkup Kementerian Komunikasi dan Informatika
-                " 
+                "sub_information" => "ringkasan informasi tentang program dan kegiatan yang sedang dijalankan dalam lingkup Kementerian Komunikasi dan Informatika" 
             ],
             [
                 "information_id" => 1,
-                "sub_information" => "ringkasan informasi tentang kinerja dalam lingkup Badan Publik berupa narasi tentang realisasi kegiatan yang telah maupun sedang dijalankan beserta capaiannya
-                " 
+                "sub_information" => "ringkasan informasi tentang kinerja dalam lingkup Badan Publik berupa narasi tentang realisasi kegiatan yang telah maupun sedang dijalankan beserta capaiannya" 
             ],
             [
                 "information_id" => 1,

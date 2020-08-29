@@ -1,4 +1,3 @@
-
 		<!-- All JS Custom Plugins Link Here here -->
         <script src="/asset_reader/assets/js/vendor/modernizr-3.5.0.min.js"></script>
 		<!-- Jquery, Popper, Bootstrap -->
@@ -37,18 +36,34 @@
 		<!-- Jquery Plugins, main Jquery -->	
         <script src="/asset_reader/assets/js/plugins.js"></script>
         <script src="/asset_reader/assets/js/main.js"></script>
+        
 
-        {{-- PDF Viewer --}}
-        <script src="/pdf_viewer/pdfobject.js"></script>
-        <script>
-            let files = Array.from(document.querySelectorAll('#file'));
-            files.forEach(file => {
-                file.addEventListener('click', () => {
-                    console.log(file.dataset.file);
-                    console.log(file.dataset.pdf);
-                    PDFObject.embed('/storage/'+file.dataset.pdf, "#example1");
-                })
+
+
+
+        <script src="/vendor/lazyload/lazysizes.min.js" async></script>
+    {{-- PDF Viewer --}}
+    <script src="/vendor/pdf_viewer/pdfobject.js"></script>
+    <script>
+        let files = Array.from(document.querySelectorAll('#file'));
+        files.forEach(file => {
+            file.addEventListener('click', () => {
+                console.log(file.dataset.file);
+                console.log(file.dataset.pdf);
+                PDFObject.embed('/storage/'+file.dataset.pdf, "#example1");
             })
-        </script>
+        })
+    </script>
+
+{{-- <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> --}}
+<script>
+    $('.single-item').slick({
+        autoplay:true,
+        arrows: false,
+        autoplaySpeed:1250,
+        mobileFirst: true,
+    });
+</script>
+
     </body>
 </html>

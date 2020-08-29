@@ -14,16 +14,12 @@
                                 <img src="/{{$inf->thumbnail}}" alt="">
                             @endif
                         </div>
-                        <div class="row mt-3">
                             @if ($inf->file !== null)
-                            <div class="col-md-3">
-                                <a href="#" id="file" class="text-primary" data-pdf="{{$inf->file}}" data-toggle="modal" data-target="#exampleModal">Lihat Laporan</a>
-                            </div>
-                            <div class="col-md-3">
-                                <a href="" class="text-primary">Download Laporan</a>
-                            </div>
+                                <div class="mt-3">
+                                    <a href="#" id="file" class="text-primary" data-pdf="{{$inf->file}}" data-toggle="modal" data-target="#exampleModal">Lihat Laporan</a>
+                                    <a href="{{route('informasi.download',$inf)}}" class="text-primary mx-2">Download Laporan</a>
+                                </div>
                             @endif
-                        </div>
                         <div class="section-tittle mb-30 pt-30">
                             <h3>{{$inf->title}}</h3>
                         </div>

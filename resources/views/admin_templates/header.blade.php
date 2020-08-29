@@ -9,13 +9,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="/asset_admin/assets/images/favicon.png">
-    <title>Matrix Template - The Ultimate Multipurpose admin template</title>
+    <link rel="shortcut icon" href="/asset_reader/assets/img/favicon.ico" type="image/x-icon">
+    <title>Dashboard Admin</title>
     {{-- <!-- Custom CSS -->
     <link href="/asset_admin/assets/libs/flot/css/float-chart.css" rel="stylesheet"> --}}
     <!-- Custom CSS -->
     <link href="/asset_admin/dist/css/style.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/dataTables/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="/vendor/dataTables/jquery.dataTables.min.css">
     <style>
         .pdfobject-container { height: 30rem; border: 1rem solid rgba(0,0,0,.1); }
     </style>

@@ -46,4 +46,9 @@
             </div>
         </div>
     @include('admin.util.tableFooter')
+    @push('table')
+        <script>
+            $('#example').DataTable();
+        </script>
+    @endpush
 @endsection
