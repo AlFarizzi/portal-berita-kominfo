@@ -37,7 +37,6 @@ class LaporanController extends Controller
 
     public function store(LaporanRequest $request) {
         $input = $request->all();
-        dd($input);
         (!isset($input['file'])) ? $input['file'] = null : $input['file'] = $request->file('file')->store('file');
         (!isset($input['thumbnail'])) ? $input['thumbnail'] = 'default.jpg' : $input['thumbnail'] = $request->file('thumbnail')->store('laporan');
         $input['slug'] = \Str::slug($input['title']).'-'.\Str::random(5);

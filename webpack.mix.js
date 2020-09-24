@@ -1,15 +1,14 @@
-const mix = require('laravel-mix');
+let mix = require("laravel-mix");
 
-/*
- |--------------------------------------------------------------------------
- | Mix Asset Management
- |--------------------------------------------------------------------------
- |
- | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel application. By default, we are compiling the Sass
- | file for the application as well as bundling up all the JS files.
- |
- */
-
-mix.js('resources/js/app.js','resources/js/bootstrap.js','public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+mix.styles([
+    'public/asset_reader/assets/css/ticker-style.css',
+    'public/asset_reader/assets/css/flaticon.css',
+    'public/asset_reader/assets/css/slicknav.css',
+    'public/asset_reader/assets/css/animate.min.css',
+    'public/asset_reader/assets/css/magnific-popup.css',
+    'public/asset_reader/assets/css/fontawesome-all.min.css',
+    'public/asset_reader/assets/css/themify-icons.css',
+    "public/asset_reader/assets/css/slick.css",
+    'public/asset_reader/assets/css/nice-select.css',
+    'public/asset_reader/assets/css/style.css'
+],'public/asset_reader/gabung.css').version();
